@@ -1,7 +1,7 @@
 # Hiddder
 Short link service written in PHP and sqLite.
 # Bonus
-In the public/bot/ folder is a bot for VK.
+In the public/bot/ folder is a bot for VK and Telegram.
 
 At youdomain/cleaning file cleanup database from links older than two weeks.
 
