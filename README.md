@@ -8,3 +8,5 @@ At youdomain/cleaning file cleanup database from links older than two weeks.
 https://hiddder.ml
 
 https://vk.me/hiddder
+
+https://t.me/hiddder_bot
