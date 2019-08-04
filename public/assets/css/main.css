@@ -3968,6 +3968,7 @@ html, body{
 	bottom: 10px;
 	right: 10px;
 	user-select: none;
+	width: 100%;
 }
 .error{
 	background: #e5474b;
@@ -3988,7 +3989,7 @@ html, body{
 }
 
 .social-link{
-	max-width: 24px;
+	max-width: 23px;
 	position: relative;
 	margin-bottom: -5px;
 	margin-left: 15px;
