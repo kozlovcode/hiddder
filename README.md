@@ -1,5 +1,5 @@
 # Hiddder
-Short link service written in PHP and sqLite.
+Short link service written in PHP and sqlite.
 # Bonus
 In the public/bot/ folder is a bot for VK and Telegram.
 
