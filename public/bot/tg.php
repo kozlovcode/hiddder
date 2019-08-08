@@ -1,5 +1,5 @@
 <?php
-require str_replace('/public/', '', dirname(__DIR__).'//config/config.php');
+require str_replace('/public', '', dirname(__DIR__).'/config/config.php');
 
 define('TOKEN', '97');
 define('DOMAIN', 'https://example.com/');

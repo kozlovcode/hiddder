@@ -3,7 +3,7 @@ error_reporting(0);
 
 include 'libs/rb-sqlite.php';
 
-R::setup( 'sqlite:' . dirname(__DIR__) . '/config/data.db' );
+R::setup( 'sqlite:' . dirname(__DIR__) . '/config/data.sqlite' );
 if ( !R::testConnection()) {
 	exit();
 }
