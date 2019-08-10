@@ -46,6 +46,12 @@ if ($link->hash !== generate()) {
 				copyText.select();
 				document.execCommand("copy");
 			}
+			var storage = {
+				link: "<?php echo $_SERVER['HTTP_REFERER'] . $link ?>",
+				short: "<?php echo $uri ?>"
+			};
+			console.log(storage);
+			localStorage.setItem('<?php echo time() ?>', JSON.stringify(storage));
 		</script>
 		<?php
 	}else{

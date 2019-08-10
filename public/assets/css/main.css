@@ -3194,7 +3194,7 @@
 		@media screen and (max-width: 980px) {
 
 			#nav {
-				display: none;
+				/*display: none;*/
 			}
 
 		}
@@ -3997,4 +3997,22 @@ html, body{
 }
 .social-link:hover{
 	opacity: .8;
+}
+
+.links h2{
+	color: #fff;
+}
+.links a{
+	color: #fff;
+	text-decoration: underline;
+}
+table thead {
+    border-bottom-color: #fff;
+}
+table th {
+    color: #fff;
+    text-align: center;
+}
+table tbody tr {
+    border-color: #fff;
 }

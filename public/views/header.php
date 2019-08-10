@@ -13,5 +13,8 @@
 <header id="header">
 	<div class="inner">
 		<a href="/" class="logo">Hiddder</a>
+		<nav id="nav">
+								<a href="/links">You links</a>
+							</nav>
 	</div>
 </header>

@@ -9,6 +9,9 @@ switch ($url) {
     case 'cleaning':
         require_once('modules/cleaning.php');
         break;
+    case 'links':
+        require_once('views/links.php');
+        break;
     default:
         require_once ('modules/redirect.php');
         break;
