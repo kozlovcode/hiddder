@@ -47,8 +47,8 @@ if ($link->hash !== generate()) {
 				document.execCommand("copy");
 			}
 			var storage = {
-				link: "<?php echo $_SERVER['HTTP_REFERER'] . $link ?>",
-				short: "<?php echo $uri ?>"
+				link: "<?php echo $uri ?>",
+				short: "<?php echo $_SERVER['HTTP_REFERER'] . $link ?>"
 			};
 			console.log(storage);
 			localStorage.setItem('<?php echo time() ?>', JSON.stringify(storage));

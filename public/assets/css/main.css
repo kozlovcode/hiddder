@@ -4006,13 +4006,16 @@ html, body{
 	color: #fff;
 	text-decoration: underline;
 }
-table thead {
-    border-bottom-color: #fff;
+#list span{
+	color: #fff;
+	display: block;
+
 }
-table th {
-    color: #fff;
-    text-align: center;
+#list small{
+	display: block;
+	border-bottom: 1px solid #f2a3a5;
 }
-table tbody tr {
-    border-color: #fff;
+#list small a{
+	font-size: .8rem;
+	color: #f2a3a5;
 }
