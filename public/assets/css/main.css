@@ -4004,7 +4004,9 @@ html, body{
 }
 .links a{
 	color: #fff;
-	text-decoration: underline;
+}
+#list{
+	text-align: left;
 }
 #list span{
 	color: #fff;
@@ -4014,6 +4016,7 @@ html, body{
 #list small{
 	display: block;
 	border-bottom: 1px solid #f2a3a5;
+	margin-bottom: 12px;
 }
 #list small a{
 	font-size: .8rem;

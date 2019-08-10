@@ -24,6 +24,7 @@ if ($link->hash !== generate()) {
 		$saveLink->url = rawurlencode($uri);
 		$saveLink->hash = $link;
 		$saveLink->timestamp = time();
+		$saveLink->uid = $_COOKIE['UID'];
 		R::store($saveLink);
 		?>
 		<section id="footer">
@@ -46,12 +47,6 @@ if ($link->hash !== generate()) {
 				copyText.select();
 				document.execCommand("copy");
 			}
-			var storage = {
-				link: "<?php echo $_SERVER['HTTP_REFERER'] . $link ?>",
-				short: "<?php echo $uri ?>"
-			};
-			console.log(storage);
-			localStorage.setItem('<?php echo time() ?>', JSON.stringify(storage));
 		</script>
 		<?php
 	}else{
