@@ -10,7 +10,7 @@ include 'views/header.php';
 			<?php 
 			$links = R::findLike('link', ['uid' => $_COOKIE['UID']], 'ORDER BY timestamp DESC');
 			foreach ($links as $link) {
-				echo '<span><a href="'.$_SERVER['HTTP_REFERER'].$link->hash.'"">'.$_SERVER['HTTP_REFERER'].$link->hash.'</a></span><small>Views: '.$link->views.'<br><a href="'.rawurldecode($link->url).'">'.rawurldecode($link->url).'</small>';
+				echo '<span><a href="'.$_SERVER['HTTP_REFERER'].$link->hash.'"">'.$_SERVER['HTTP_REFERER'].$link->hash.'</a></span><small>Views: '.$link->views.'<br><a href="'.rawurldecode($link->url).'">'.rawurldecode($link->url).'</a></small>';
 			}
 			?>
 		</div>

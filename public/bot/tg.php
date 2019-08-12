@@ -56,12 +56,12 @@ switch ($data->message->text) {
 				$saveLink->timestamp = time();
 				$saveLink->uid = md5($data->message->chat->id);
 				R::store($saveLink);
-				$link = SITE.$link;
+				$link = '`'.SITE.$link.'`';
 		}else{
 			$link = 'This site does not exist';
 		}
 
-			file_get_contents(API.'sendMessage?parse_mode=markdown&chat_id='.$data->message->chat->id.'&text=`'.$link.'`');
+			file_get_contents(API.'sendMessage?parse_mode=markdown&chat_id='.$data->message->chat->id.'&text='.$link);
 			if (get_headers($uri)) {
 				file_get_contents(API.'sendMessage?chat_id='.$data->message->chat->id.'&text=You link is valid for 2 weeks. After this time, the link will be removed.');
 			}
