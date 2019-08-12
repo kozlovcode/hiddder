@@ -1,23 +1,28 @@
 <?php
-require str_replace('/public', '', dirname(__DIR__).'/config/config.php');
+require str_replace('/public/', '', dirname(__DIR__).'//config/config.php');
 
-define('TOKEN', '97');
-define('DOMAIN', 'https://example.com/');
-define('WEBHOOK', DOMAIN.'bot/tg.php');
+define('TOKEN', 'PUT YOU TOKEN');
 define('API', 'https://api.telegram.org/bot'.TOKEN.'/');
-
-$result = file_get_contents(API.'getWebhookInfo');
-$result = json_decode($result);
-
-if (empty($result->result->url)) {
-	file_get_contents(API.'setWebhook?url='.WEBHOOK);
-}
+define('SITE', 'PUT YOU SITE https://example.com/');
 
 $result = file_get_contents('php://input');
 $result = json_decode($result);
+
 switch ($result->message->text) {
 	case '/start':
 		file_get_contents(API.'sendMessage?chat_id='.$result->message->chat->id."&text=Write me your link and I'll hide it");
+		break;
+	case '/mylinks':
+		$links = R::findLike('link', ['uid' => md5($result->message->chat->id)], 'ORDER BY timestamp DESC');
+		foreach ($links as $link) {
+			$myLinks = $myLinks.'`'.SITE.$link->hash.'`'.PHP_EOL.'`'.rawurldecode($link->url).'` ('.$link->views.' views)'.PHP_EOL.PHP_EOL;
+		}
+		$queryData = [
+			'parse_mode' => 'markdown',
+			'chat_id' => $result->message->chat->id,
+			'text' => $myLinks
+		];
+		file_get_contents(API.'sendMessage?'.http_build_query($queryData));
 		break;
 	default:
 		function generate(){
@@ -36,6 +41,7 @@ switch ($result->message->text) {
 		}else{
 			generate();
 		}
+
 		$uri = $result->message->text;
 		if (!parse_url($uri, PHP_URL_SCHEME)) {
 			$uri = 'http://'.$uri;
@@ -45,12 +51,14 @@ switch ($result->message->text) {
 				$saveLink->url = rawurlencode($uri);
 				$saveLink->hash = $link;
 				$saveLink->timestamp = time();
+				$saveLink->uid = md5($result->message->chat->id);
 				R::store($saveLink);
-				$link = DOMAIN . $link;
+				$link = SITE.$link;
 		}else{
 			$link = 'This site does not exist';
 		}
-			file_get_contents(API.'sendMessage?chat_id='.$result->message->chat->id.'&text='.$link);
+
+			file_get_contents(API.'sendMessage?parse_mode=markdown&chat_id='.$result->message->chat->id.'&text=`'.$link.'`');
 			if (get_headers($uri)) {
 				file_get_contents(API.'sendMessage?chat_id='.$result->message->chat->id.'&text=You link is valid for 2 weeks. After this time, the link will be removed.');
 			}
