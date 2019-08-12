@@ -13,15 +13,19 @@ switch ($data->message->text) {
 		break;
 	case '/mylinks':
 		$links = R::findLike('link', ['uid' => md5($data->message->chat->id)], 'ORDER BY timestamp DESC');
-		foreach ($links as $link) {
-			$myLinks = $myLinks.'`'.SITE.$link->hash.'`'.PHP_EOL.'`'.rawurldecode($link->url).'` ('.$link->views.' views)'.PHP_EOL.PHP_EOL;
+		if ($links) {
+			foreach ($links as $link) {
+				$myLinks = $myLinks.'`'.SITE.$link->hash.'`'.PHP_EOL.$link->views.' views'.PHP_EOL.'`'.rawurldecode($link->url).'`'.PHP_EOL.'---'.PHP_EOL;
+			}
+			$queryData = [
+				'parse_mode' => 'markdown',
+				'chat_id' => $data->message->chat->id,
+				'text' => $myLinks
+			];
+			file_get_contents(API.'sendMessage?'.http_build_query($queryData));
+		}else{
+			file_get_contents(API.'sendMessage?chat_id='.$data->message->chat->id."&text=You links list is empty");
 		}
-		$queryData = [
-			'parse_mode' => 'markdown',
-			'chat_id' => $data->message->chat->id,
-			'text' => $myLinks
-		];
-		file_get_contents(API.'sendMessage?'.http_build_query($queryData));
 		break;
 	default:
 		function generate(){
