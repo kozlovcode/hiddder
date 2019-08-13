@@ -51,6 +51,6 @@ if ($link->hash !== generate()) {
 		<?php
 	}else{
 		echo '<script>alert("This site does not exist");</script>';
-		echo '<meta http-equiv="refresh" content="1;URL=/">';
+		echo '<meta http-equiv="refresh" content="0;URL=/">';
 	}
 ?>
