@@ -16,3 +16,4 @@ switch ($url) {
         require_once ('modules/redirect.php');
         break;
 }
+
